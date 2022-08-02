@@ -1,0 +1,62 @@
+﻿@using PratikAraBul.Models.Entity
+@model List<tblHizmetler>
+
+@{
+    ViewBag.Title = "Ekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+   
+  
+
+ 
+
+</head>
+<body>
+    
+    <a href="/Hizmetler/YeniHizmet" class="btn btn-primary">Yeni Hizmet Ekle</a>
+    <table class="table table-bordered">
+        <tr>
+            <th>Hizmet ID</th>
+            <th>Hizmet Adı</th>
+            <th>Hizmet No</th>
+            <th>Hizmet Kategorisi</th>
+            <th>Hizmet Resmi</th>
+            <th>Hizmet Resmi</th>
+            <th>Hizmet Başlık Altı</th>
+            <th>Hizmet Açıklaması</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.HizmetId</td>
+                    <td>@item.HizmetAdi</td>
+                    <td>@item.HizmetNo</td>
+                    <td>@item.tblHizmetKategori.KategoriAd
+                    <td><img src="/images/@item.HizmetResimUrl" width="100" /> </td>
+                    <td>@Html.Raw(item.HizmetDesc) </td>
+                    <td>@Html.Raw(item.HizmetDesc)@item.BaslikAlti</td>
+
+
+                    
+
+                    <td><a href="/Hizmetler/Sil/@item.HizmetId" class="btn btn-danger">Sil</a> </td>
+                    <td><a href="/Hizmetler/HizmetGuncelle/@item.HizmetId" class="btn btn-success">Güncelleme</a> </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

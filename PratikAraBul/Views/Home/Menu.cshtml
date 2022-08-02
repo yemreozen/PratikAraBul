@@ -1,0 +1,20 @@
+﻿@using PratikAraBul.Models
+@model HizmetlerModel
+
+
+
+
+<ul class="htmlCss-sub-menu sub-menu">
+    @foreach (var item in Model.HizmetKategoriList)
+    {
+        <li>
+            @Html.ActionLink(item.KategoriAd, "Kategori","MusteriHizmetleriNumaralari", new { id = item.Id, kategoriad = Seo.AdresDuzenle(item.KategoriAd) }, new { @style = "  text-decoration:none;" })
+            @*<a href="musterihizmetlerinumaralari/kategori/@item.Id/">@item.KategoriAd</a>*@
+        </li>
+      
+    }
+</ul>
+
+
+
+

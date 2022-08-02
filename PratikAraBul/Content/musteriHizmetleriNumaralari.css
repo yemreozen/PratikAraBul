@@ -1,0 +1,253 @@
+﻿* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0px;
+    
+}
+body {
+    background-color: #fff;
+}
+.ust_kisim{
+    margin-top:80px;
+}
+.paged{
+    position:relative;
+    top:150px;
+
+}
+
+.cards:hover > .card:not(:hover) {
+    filter: brightness(0.3) saturate(0) contrast(1.1) blur(5px);
+}
+
+.card:hover {
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.55);
+    border-radius: 25px;
+    transform: translateY(-10px);
+   
+}
+
+.cards > div:hover {
+    background-color: #5C5C5C;
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: 1fr repeat(12, minmax(auto,60px)) 1fr;
+    grid-gap: 40px;
+    padding: 40px 0;
+}
+
+
+
+.cards {
+    grid-column: 2 / span 2;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto,60px));
+    grid-gap: 40px;
+    margin-top: 60px;
+}
+
+.card {
+    grid-column-end: span 4;
+    display: flex;
+    flex-direction: column;
+    background-color: #39393b;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.55s ease 0s; 
+}
+
+.card-image {
+    width: 100%;
+    padding-top: 55%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px 15px 0px 0px;
+}
+
+    .card-image img {
+        Width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    margin-bottom: 20px;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+    .card {
+        grid-column-end: span 4;
+    }
+
+   
+}
+
+@media only screen and (max-width: 700px) {
+    main {
+        grid-gap:55px;
+    }
+
+    .cards{
+        margin-top:45px;
+        padding:0;
+    }
+    
+
+
+}
+
+@media only screen and (max-width: 500px) {
+  
+
+    .cards {
+        grid-column: 2 / span 6;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 20px;
+    }
+
+    .card {
+        grid-column-end: span 6;
+    }
+}
+/*Diğer Pratik Araçlar Kısmı*/
+:root {
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+    --varyDarkBlue: hsl(234, 12%, 34%);
+    --grayishBlue: hsl(229, 6%, 66%);
+    --veryLightGray: hsl(0, 0%, 98%);
+    --weight1: 200;
+    --weight2: 400;
+    --weight3: 600;
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--veryLightGray);
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+    .attribution a {
+        color: hsl(228, 45%, 44%);
+    }
+
+h1:first-of-type {
+    font-weight: var(--weight1);
+    color: var(--varyDarkBlue);
+}
+
+h1:last-of-type {
+    color: var(--varyDarkBlue);
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.header {
+    text-align: center;
+    line-height: 0.8;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+    .header p {
+        margin: 0 auto;
+        line-height: 2;
+        color: var(--grayishBlue);
+    }
+
+
+.box p {
+    color: var(--grayishBlue);
+}
+
+.box {
+    border-radius: 5px;
+    box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+    padding: 30px;
+    margin: 20px;
+    margin-block-end:150px;
+}
+
+.box img {
+    float: right;
+}
+
+@media (max-width: 450px) {
+    .box {
+        height: 200px;
+    }
+}
+
+@media (max-width: 950px) and (min-width: 450px) {
+    .box {
+        text-align: center;
+        height: 180px;
+    }
+}
+
+.cyan {
+    border-top: 3px solid var(--cyan);
+}
+
+.red {
+    border-top: 3px solid var(--red);
+}
+
+.blue {
+    border-top: 3px solid var(--blue);
+}
+
+.orange {
+    border-top: 3px solid var(--orange);
+}
+
+h2 {
+    color: var(--varyDarkBlue);
+    font-weight: var(--weight3);
+}
+
+
+@media (min-width: 950px) {
+    .row1-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+   
+
+    .box-down {
+        position: relative;
+        top: 150px;
+    }
+
+    .box {
+        width: 20%;
+    }
+
+    .header p {
+        width: 30%;
+    }
+}

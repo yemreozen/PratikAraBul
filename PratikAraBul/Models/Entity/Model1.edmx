@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PratikAraBulModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblBasliklar">
+          <Key>
+            <PropertyRef Name="BaslikId" />
+          </Key>
+          <Property Name="BaslikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriHizmetleriBaslik" Type="nvarchar(max)" />
+          <Property Name="HesaplamaAraclariBaslik" Type="nvarchar(max)" />
+          <Property Name="KalanGünSayaciBaslik" Type="nvarchar(max)" />
+          <Property Name="MarkaId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblHizmetKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblHizmetler">
+          <Key>
+            <PropertyRef Name="HizmetId" />
+          </Key>
+          <Property Name="HizmetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HizmetAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="HizmetNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="HizmetKategori" Type="int" />
+          <Property Name="HizmetResimUrl" Type="ntext" />
+          <Property Name="HizmetDesc" Type="nvarchar(max)" />
+          <Property Name="BaslikAlti" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblPopularHizmet">
+          <Key>
+            <PropertyRef Name="PopularId" />
+          </Key>
+          <Property Name="PopularId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PopularAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="HizmetId" Type="int" />
+        </EntityType>
+        <Association Name="FK_tblBasliklar_tblHizmetler">
+          <End Role="tblHizmetler" Type="Self.tblHizmetler" Multiplicity="0..1" />
+          <End Role="tblBasliklar" Type="Self.tblBasliklar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetler">
+              <PropertyRef Name="HizmetId" />
+            </Principal>
+            <Dependent Role="tblBasliklar">
+              <PropertyRef Name="MarkaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblHizmetler_tblHizmetKategori">
+          <End Role="tblHizmetKategori" Type="Self.tblHizmetKategori" Multiplicity="0..1" />
+          <End Role="tblHizmetler" Type="Self.tblHizmetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetKategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblHizmetler">
+              <PropertyRef Name="HizmetKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPopularHizmet_tblHizmetler">
+          <End Role="tblHizmetler" Type="Self.tblHizmetler" Multiplicity="0..1" />
+          <End Role="tblPopularHizmet" Type="Self.tblPopularHizmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetler">
+              <PropertyRef Name="HizmetId" />
+            </Principal>
+            <Dependent Role="tblPopularHizmet">
+              <PropertyRef Name="HizmetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PratikAraBulModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBasliklar" EntityType="Self.tblBasliklar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHizmetKategori" EntityType="Self.tblHizmetKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHizmetler" EntityType="Self.tblHizmetler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPopularHizmet" EntityType="Self.tblPopularHizmet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblBasliklar_tblHizmetler" Association="Self.FK_tblBasliklar_tblHizmetler">
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+            <End Role="tblBasliklar" EntitySet="tblBasliklar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblHizmetler_tblHizmetKategori" Association="Self.FK_tblHizmetler_tblHizmetKategori">
+            <End Role="tblHizmetKategori" EntitySet="tblHizmetKategori" />
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPopularHizmet_tblHizmetler" Association="Self.FK_tblPopularHizmet_tblHizmetler">
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+            <End Role="tblPopularHizmet" EntitySet="tblPopularHizmet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PratikAraBulModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AraBulEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="PratikAraBulModel.sysdiagrams" />
+          <EntitySet Name="tblHizmetKategori" EntityType="PratikAraBulModel.tblHizmetKategori" />
+          <EntitySet Name="tblHizmetler" EntityType="PratikAraBulModel.tblHizmetler" />
+          <AssociationSet Name="FK_tblHizmetler_tblHizmetKategori" Association="PratikAraBulModel.FK_tblHizmetler_tblHizmetKategori">
+            <End Role="tblHizmetKategori" EntitySet="tblHizmetKategori" />
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+          </AssociationSet>
+          <EntitySet Name="tblBasliklar" EntityType="PratikAraBulModel.tblBasliklar" />
+          <AssociationSet Name="FK_tblBasliklar_tblHizmetler" Association="PratikAraBulModel.FK_tblBasliklar_tblHizmetler">
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+            <End Role="tblBasliklar" EntitySet="tblBasliklar" />
+          </AssociationSet>
+          <EntitySet Name="tblAdmin" EntityType="PratikAraBulModel.tblAdmin" />
+          <EntitySet Name="tblPopularHizmet" EntityType="PratikAraBulModel.tblPopularHizmet" />
+          <AssociationSet Name="FK_tblPopularHizmet_tblHizmetler" Association="PratikAraBulModel.FK_tblPopularHizmet_tblHizmetler">
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+            <End Role="tblPopularHizmet" EntitySet="tblPopularHizmet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblHizmetKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblHizmetler" Relationship="PratikAraBulModel.FK_tblHizmetler_tblHizmetKategori" FromRole="tblHizmetKategori" ToRole="tblHizmetler" />
+        </EntityType>
+        <EntityType Name="tblHizmetler">
+          <Key>
+            <PropertyRef Name="HizmetId" />
+          </Key>
+          <Property Name="HizmetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HizmetAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HizmetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HizmetKategori" Type="Int32" />
+          <NavigationProperty Name="tblHizmetKategori" Relationship="PratikAraBulModel.FK_tblHizmetler_tblHizmetKategori" FromRole="tblHizmetler" ToRole="tblHizmetKategori" />
+          <Property Name="HizmetResimUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HizmetDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBasliklar" Relationship="PratikAraBulModel.FK_tblBasliklar_tblHizmetler" FromRole="tblHizmetler" ToRole="tblBasliklar" />
+          <Property Name="BaslikAlti" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblPopularHizmet" Relationship="PratikAraBulModel.FK_tblPopularHizmet_tblHizmetler" FromRole="tblHizmetler" ToRole="tblPopularHizmet" />
+        </EntityType>
+        <Association Name="FK_tblHizmetler_tblHizmetKategori">
+          <End Type="PratikAraBulModel.tblHizmetKategori" Role="tblHizmetKategori" Multiplicity="0..1" />
+          <End Type="PratikAraBulModel.tblHizmetler" Role="tblHizmetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetKategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblHizmetler">
+              <PropertyRef Name="HizmetKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblBasliklar">
+          <Key>
+            <PropertyRef Name="BaslikId" />
+          </Key>
+          <Property Name="BaslikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriHizmetleriBaslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HesaplamaAraclariBaslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KalanGünSayaciBaslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarkaId" Type="Int32" />
+          <NavigationProperty Name="tblHizmetler" Relationship="PratikAraBulModel.FK_tblBasliklar_tblHizmetler" FromRole="tblBasliklar" ToRole="tblHizmetler" />
+        </EntityType>
+        <Association Name="FK_tblBasliklar_tblHizmetler">
+          <End Type="PratikAraBulModel.tblHizmetler" Role="tblHizmetler" Multiplicity="0..1" />
+          <End Type="PratikAraBulModel.tblBasliklar" Role="tblBasliklar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetler">
+              <PropertyRef Name="HizmetId" />
+            </Principal>
+            <Dependent Role="tblBasliklar">
+              <PropertyRef Name="MarkaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPopularHizmet">
+          <Key>
+            <PropertyRef Name="PopularId" />
+          </Key>
+          <Property Name="PopularId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PopularAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HizmetId" Type="Int32" />
+          <NavigationProperty Name="tblHizmetler" Relationship="PratikAraBulModel.FK_tblPopularHizmet_tblHizmetler" FromRole="tblPopularHizmet" ToRole="tblHizmetler" />
+        </EntityType>
+        <Association Name="FK_tblPopularHizmet_tblHizmetler">
+          <End Type="PratikAraBulModel.tblHizmetler" Role="tblHizmetler" Multiplicity="0..1" />
+          <End Type="PratikAraBulModel.tblPopularHizmet" Role="tblPopularHizmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetler">
+              <PropertyRef Name="HizmetId" />
+            </Principal>
+            <Dependent Role="tblPopularHizmet">
+              <PropertyRef Name="HizmetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PratikAraBulModelStoreContainer" CdmEntityContainer="AraBulEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PratikAraBulModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHizmetKategori">
+            <EntityTypeMapping TypeName="PratikAraBulModel.tblHizmetKategori">
+              <MappingFragment StoreEntitySet="tblHizmetKategori">
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHizmetler">
+            <EntityTypeMapping TypeName="PratikAraBulModel.tblHizmetler">
+              <MappingFragment StoreEntitySet="tblHizmetler">
+                <ScalarProperty Name="BaslikAlti" ColumnName="BaslikAlti" />
+                <ScalarProperty Name="HizmetDesc" ColumnName="HizmetDesc" />
+                <ScalarProperty Name="HizmetResimUrl" ColumnName="HizmetResimUrl" />
+                <ScalarProperty Name="HizmetKategori" ColumnName="HizmetKategori" />
+                <ScalarProperty Name="HizmetNo" ColumnName="HizmetNo" />
+                <ScalarProperty Name="HizmetAdi" ColumnName="HizmetAdi" />
+                <ScalarProperty Name="HizmetId" ColumnName="HizmetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBasliklar">
+            <EntityTypeMapping TypeName="PratikAraBulModel.tblBasliklar">
+              <MappingFragment StoreEntitySet="tblBasliklar">
+                <ScalarProperty Name="MarkaId" ColumnName="MarkaId" />
+                <ScalarProperty Name="KalanGünSayaciBaslik" ColumnName="KalanGünSayaciBaslik" />
+                <ScalarProperty Name="HesaplamaAraclariBaslik" ColumnName="HesaplamaAraclariBaslik" />
+                <ScalarProperty Name="MusteriHizmetleriBaslik" ColumnName="MusteriHizmetleriBaslik" />
+                <ScalarProperty Name="BaslikId" ColumnName="BaslikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdmin">
+            <EntityTypeMapping TypeName="PratikAraBulModel.tblAdmin">
+              <MappingFragment StoreEntitySet="tblAdmin">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPopularHizmet">
+            <EntityTypeMapping TypeName="PratikAraBulModel.tblPopularHizmet">
+              <MappingFragment StoreEntitySet="tblPopularHizmet">
+                <ScalarProperty Name="HizmetId" ColumnName="HizmetId" />
+                <ScalarProperty Name="PopularAd" ColumnName="PopularAd" />
+                <ScalarProperty Name="PopularId" ColumnName="PopularId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

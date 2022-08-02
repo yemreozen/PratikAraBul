@@ -1,0 +1,50 @@
+﻿@using PratikAraBul.Models.Entity
+@model List<tblHizmetKategori>
+
+@{
+    ViewBag.Title = "Ekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+   
+
+   
+
+</head>
+<body>
+    <a href="/SifirUcSifirBes/YeniKategori" class="btn btn-primary">Yeni Kategori Ekle</a>
+    <table class="table table-bordered">
+        <tr>
+            <th>Kategori ID</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.KategoriAd</td>
+                    
+
+                    <td><a href="/Kategori/Sil/@item.Id" class="btn btn-danger">Sil</a> </td>
+                    <td><a href="/Kategori/KategoriGuncelle/@item.Id" class="btn btn-success">Güncelleme</a> </td>
+
+                </tr>
+
+
+            }
+        </tbody>
+    </table>
+
+
+</body>
+</html>

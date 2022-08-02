@@ -1,0 +1,33 @@
+﻿@model PratikAraBul.Models.Entity.tblHizmetKategori
+
+@{
+    ViewBag.Title = "Ekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    
+ 
+
+</head>
+<body>
+    @using (Html.BeginForm("Guncellet", "Kategori", FormMethod.Post)) 
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Id)
+            @Html.TextBoxFor(m => m.Id, new { @class = "form-control" })
+            <br>
+            @Html.LabelFor(m => m.Id)
+            @Html.TextBoxFor(m => m.KategoriAd, new { @class = "form-control" })
+        </div>
+        <div>
+            <button class="btn btn-warning">Kategoriyi Güncelle</button>
+        </div>
+    }
+</body>
+</html>

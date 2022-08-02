@@ -1,0 +1,93 @@
+﻿@model PratikAraBul.Models.Entity.tblHizmetler
+
+@{
+    ViewBag.Title = "Ekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+   
+
+  
+
+
+
+</head>
+<body>
+    @using (Html.BeginForm("Guncelle", "Hizmetler", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.HizmetId)
+            @Html.TextBoxFor(m => m.HizmetId, new { @class = "form-control" })
+            <br>
+            @Html.LabelFor(m => m.HizmetAdi)
+            @Html.TextBoxFor(m => m.HizmetAdi, new { @class = "form-control" })
+            <br>
+            @Html.LabelFor(m => m.HizmetNo)
+            @Html.TextBoxFor(m => m.HizmetNo, new { @class = "form-control" })
+            <br>
+            @Html.LabelFor(m => m.HizmetKategori)
+            @Html.DropDownListFor(m => m.tblHizmetKategori.Id, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+            <br>
+            @Html.LabelFor(m => m.HizmetResimUrl)
+            @Html.TextBoxFor(m => m.HizmetResimUrl, new { @class = "form-control" })
+             <br>
+            @Html.LabelFor(m => m.BaslikAlti)
+            @Html.TextAreaFor(m => m.BaslikAlti, new { @class = "form-control", id = "summernotes" })
+            <br>
+            @Html.LabelFor(m => m.HizmetDesc)
+            @Html.TextAreaFor(m => m.HizmetDesc, new { @class = "form-control", id = "summernote" })
+        </div>
+        <div>
+            <button class="btn btn-warning">Kategoriyi Güncelle</button>
+        </div>
+    }
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Bir şeyler yaz..',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
+    <script>
+        $('#summernotes').summernote({
+            placeholder: 'Bir şeyler yaz..',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿@model PratikAraBul.Models.AdLogin
+
+
+
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = null;
+}
+
+
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Content/login.css" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <!--Bazı tarayıcılarda şifre göster iconu olmadığı için javascripte şifre göster butonu yaptım-->
+
+    <script>
+        function gorsifre(id, el) {
+            let gor = document.getElementById(id);
+            if (gor.type === "password") {
+                gor.type = "text";
+                el.className = 'fa fa-eye-slash gorsifre';
+            }
+            else {
+                gor.type = "password";
+                el.className = 'fa fa-eye gorsifre';
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--Burada login panelimiz yer almakta-->
+    <div class="container">
+        <form action="Index" method="post">
+            <div class="row">
+                <img class="logo" src="~/images/pratiklogo.png">
+
+
+                <div class="col">
+                    <input type="text" name="KullaniciAdi" placeholder="E-Posta adı" required>
+                    <input type="password" id="sifre" name="Sifre" placeholder="Şifre" required>
+                    <i class="fa fa-eye gorsifre" onClick="gorsifre('sifre', this)" id="sifree">   </i>
+                    <input type="submit" id="giris" value="Giriş yap">
+
+                    @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+                </div>
+
+
+
+            </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
