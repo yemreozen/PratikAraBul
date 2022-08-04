@@ -1,0 +1,44 @@
+﻿@model PratikAraBul.Models.Entity.tblPopularHizmet
+@{
+    ViewBag.Title = "Ekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+
+
+
+</head>
+<body>
+
+    <form class="form-group" method="post" enctype="multipart/form-data">
+        <div>
+            <label>Populer Hizmet Adı</label>
+            <input type="text" class="form-control" name="PopularAd" required />
+        </div>
+        
+        <div>
+            <label>Populer Kategorisi</label>
+            @Html.DropDownListFor(m => m.tblHizmetler.HizmetId, (List<SelectListItem>)ViewBag.populer, new { @class = "form-control" })
+
+        </div>
+
+        <div>
+
+            <label>Populer Resimi</label>
+            <input type="file" class="form-control" name="PopularImageUrl" required />
+        </div>
+
+        <div>
+            <button class="btn btn-info ">Kaydet</button>
+        </div>
+
+    </form>
+   
+</body>
+</html>

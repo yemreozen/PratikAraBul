@@ -1,0 +1,52 @@
+﻿@using PratikAraBul.Models.Entity
+@model List<tblPopularHizmet>
+
+@{
+    ViewBag.Title = "Ekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+
+
+
+
+
+</head>
+<body>
+
+    <a href="/Hizmetler/PopularEkle" class="btn btn-primary">Yeni Hizmet Ekle</a>
+    <table class="table table-bordered">
+        <tr>
+            <th>Popular ID</th>
+            <th>Populer Hizmet Adı</th>
+            <th>Populer Hizmet Resmi</th>
+            <th>Sil</th>
+            
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PopularId</td>
+                    <td>@item.PopularAd</td>
+                    <td><img src="/images/@item.PopularImageUrl" width="100" /> </td>
+
+
+
+                    <td><a href="/Hizmetler/PopularSil/@item.PopularId" class="btn btn-danger">Sil</a> </td>
+                   
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

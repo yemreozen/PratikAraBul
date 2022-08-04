@@ -29,6 +29,7 @@ namespace PratikAraBul.Controllers
         {
             model.HizmetlerList = db.tblHizmetler.Where(x => x.HizmetId == id).ToList();
             model.HizmetKategoriList = db.tblHizmetKategori.ToList();
+            model.PopularHizmetList = db.tblPopularHizmet.ToList();
 
             return View(model);
         }

@@ -59,6 +59,7 @@
           <Property Name="PopularId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PopularAd" Type="nvarchar" MaxLength="50" />
           <Property Name="HizmetId" Type="int" />
+          <Property Name="PopularImageUrl" Type="text" />
         </EntityType>
         <Association Name="FK_tblBasliklar_tblHizmetler">
           <End Role="tblHizmetler" Type="Self.tblHizmetler" Multiplicity="0..1" />
@@ -224,6 +225,7 @@
           <Property Name="PopularAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HizmetId" Type="Int32" />
           <NavigationProperty Name="tblHizmetler" Relationship="PratikAraBulModel.FK_tblPopularHizmet_tblHizmetler" FromRole="tblPopularHizmet" ToRole="tblHizmetler" />
+          <Property Name="PopularImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_tblPopularHizmet_tblHizmetler">
           <End Type="PratikAraBulModel.tblHizmetler" Role="tblHizmetler" Multiplicity="0..1" />
@@ -298,6 +300,7 @@
           <EntitySetMapping Name="tblPopularHizmet">
             <EntityTypeMapping TypeName="PratikAraBulModel.tblPopularHizmet">
               <MappingFragment StoreEntitySet="tblPopularHizmet">
+                <ScalarProperty Name="PopularImageUrl" ColumnName="PopularImageUrl" />
                 <ScalarProperty Name="HizmetId" ColumnName="HizmetId" />
                 <ScalarProperty Name="PopularAd" ColumnName="PopularAd" />
                 <ScalarProperty Name="PopularId" ColumnName="PopularId" />

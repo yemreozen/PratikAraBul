@@ -119,6 +119,60 @@ namespace PratikAraBul.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult PopularHizmetler()
+        {
+            var hizmetler = db.tblPopularHizmet.ToList();
+
+            return View(hizmetler);
+        }
+        [HttpGet]
+        public ActionResult PopularEkle()
+        {
+            List<SelectListItem> deger = (from i in db.tblHizmetler.ToList()
+                                          select new SelectListItem
+                                          {
+                                              Text = i.HizmetAdi,
+                                              Value = i.HizmetId.ToString()
+
+                                          }).ToList();
+
+
+            ViewBag.populer = deger;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PopularEkle(tblPopularHizmet pra)
+
+        {
+            if (Request.ContentLength > 0)
+            {
+                string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
+                string uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string yol = "~/images/" + dosyaadi + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(yol));
+                pra.PopularImageUrl = dosyaadi + uzanti;
+
+            }
+            var hizmetler = db.tblHizmetler.Where(m => m.HizmetId == pra.HizmetId).FirstOrDefault();
+            pra.tblHizmetler = hizmetler;
+
+
+            db.tblPopularHizmet.Add(pra);
+            db.SaveChanges();
+            return RedirectToAction("PopularHizmetler");
+
+        }
+
+        public ActionResult PopularSil(int id)
+        {
+            var popular = db.tblPopularHizmet.Find(id);
+            db.tblPopularHizmet.Remove(popular);
+            db.SaveChanges();
+            return RedirectToAction("PopularHizmetler");
+        }
+
+
+
 
 
 
