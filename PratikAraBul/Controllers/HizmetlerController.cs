@@ -101,20 +101,12 @@ namespace PratikAraBul.Controllers
             var ktg = db.tblHizmetKategori.Where(m => m.Id == p1.tblHizmetKategori.Id).FirstOrDefault();
             hizmetler.HizmetKategori = ktg.Id;
 
-            //hizmetler.HizmetResimUrl=p1.HizmetResimUrl;
-            if (Request.ContentLength < 0)
-            {
-                string dosyaadi = Path.GetFileName(Request.Files[0].FileName);
-                string uzanti = Path.GetExtension(Request.Files[0].FileName);
-                string yol = "~/images/" + dosyaadi + uzanti;
-                Request.Files[0].SaveAs(Server.MapPath(yol));
-                hizmetler.HizmetResimUrl = dosyaadi + uzanti;
-
-            }
+            hizmetler.HizmetResimUrl=p1.HizmetResimUrl;
 
 
-            hizmetler.HizmetDesc = p1.HizmetDesc;
             hizmetler.BaslikAlti = p1.BaslikAlti;
+            hizmetler.HizmetDesc = p1.HizmetDesc;
+            
 
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -153,7 +145,7 @@ namespace PratikAraBul.Controllers
                 pra.PopularImageUrl = dosyaadi + uzanti;
 
             }
-            var hizmetler = db.tblHizmetler.Where(m => m.HizmetId == pra.HizmetId).FirstOrDefault();
+            var hizmetler = db.tblHizmetler.Where(m => m.HizmetId == pra.tblHizmetler.HizmetId).FirstOrDefault();
             pra.tblHizmetler = hizmetler;
 
 

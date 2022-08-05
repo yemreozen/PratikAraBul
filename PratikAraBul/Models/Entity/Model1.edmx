@@ -33,6 +33,16 @@
           <Property Name="KalanGünSayaciBaslik" Type="nvarchar(max)" />
           <Property Name="MarkaId" Type="int" />
         </EntityType>
+        <EntityType Name="tblComments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciYorumu" Type="nvarchar(max)" />
+          <Property Name="ComHizmetId" Type="int" />
+        </EntityType>
         <EntityType Name="tblHizmetKategori">
           <Key>
             <PropertyRef Name="Id" />
@@ -73,6 +83,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblComments_tblHizmetler">
+          <End Role="tblHizmetler" Type="Self.tblHizmetler" Multiplicity="0..1" />
+          <End Role="tblComments" Type="Self.tblComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetler">
+              <PropertyRef Name="HizmetId" />
+            </Principal>
+            <Dependent Role="tblComments">
+              <PropertyRef Name="ComHizmetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblHizmetler_tblHizmetKategori">
           <End Role="tblHizmetKategori" Type="Self.tblHizmetKategori" Multiplicity="0..1" />
           <End Role="tblHizmetler" Type="Self.tblHizmetler" Multiplicity="*" />
@@ -101,12 +123,17 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBasliklar" EntityType="Self.tblBasliklar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblComments" EntityType="Self.tblComments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHizmetKategori" EntityType="Self.tblHizmetKategori" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHizmetler" EntityType="Self.tblHizmetler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPopularHizmet" EntityType="Self.tblPopularHizmet" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tblBasliklar_tblHizmetler" Association="Self.FK_tblBasliklar_tblHizmetler">
             <End Role="tblHizmetler" EntitySet="tblHizmetler" />
             <End Role="tblBasliklar" EntitySet="tblBasliklar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblComments_tblHizmetler" Association="Self.FK_tblComments_tblHizmetler">
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+            <End Role="tblComments" EntitySet="tblComments" />
           </AssociationSet>
           <AssociationSet Name="FK_tblHizmetler_tblHizmetKategori" Association="Self.FK_tblHizmetler_tblHizmetKategori">
             <End Role="tblHizmetKategori" EntitySet="tblHizmetKategori" />
@@ -139,6 +166,11 @@
           <AssociationSet Name="FK_tblPopularHizmet_tblHizmetler" Association="PratikAraBulModel.FK_tblPopularHizmet_tblHizmetler">
             <End Role="tblHizmetler" EntitySet="tblHizmetler" />
             <End Role="tblPopularHizmet" EntitySet="tblPopularHizmet" />
+          </AssociationSet>
+          <EntitySet Name="tblComments" EntityType="PratikAraBulModel.tblComments" />
+          <AssociationSet Name="FK_tblComments_tblHizmetler" Association="PratikAraBulModel.FK_tblComments_tblHizmetler">
+            <End Role="tblHizmetler" EntitySet="tblHizmetler" />
+            <End Role="tblComments" EntitySet="tblComments" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagrams">
@@ -173,6 +205,7 @@
           <NavigationProperty Name="tblBasliklar" Relationship="PratikAraBulModel.FK_tblBasliklar_tblHizmetler" FromRole="tblHizmetler" ToRole="tblBasliklar" />
           <Property Name="BaslikAlti" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblPopularHizmet" Relationship="PratikAraBulModel.FK_tblPopularHizmet_tblHizmetler" FromRole="tblHizmetler" ToRole="tblPopularHizmet" />
+          <NavigationProperty Name="tblComments" Relationship="PratikAraBulModel.FK_tblComments_tblHizmetler" FromRole="tblHizmetler" ToRole="tblComments" />
         </EntityType>
         <Association Name="FK_tblHizmetler_tblHizmetKategori">
           <End Type="PratikAraBulModel.tblHizmetKategori" Role="tblHizmetKategori" Multiplicity="0..1" />
@@ -236,6 +269,29 @@
             </Principal>
             <Dependent Role="tblPopularHizmet">
               <PropertyRef Name="HizmetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblComments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciYorumu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComHizmetId" Type="Int32" />
+          <NavigationProperty Name="tblHizmetler" Relationship="PratikAraBulModel.FK_tblComments_tblHizmetler" FromRole="tblComments" ToRole="tblHizmetler" />
+        </EntityType>
+        <Association Name="FK_tblComments_tblHizmetler">
+          <End Type="PratikAraBulModel.tblHizmetler" Role="tblHizmetler" Multiplicity="0..1" />
+          <End Type="PratikAraBulModel.tblComments" Role="tblComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHizmetler">
+              <PropertyRef Name="HizmetId" />
+            </Principal>
+            <Dependent Role="tblComments">
+              <PropertyRef Name="ComHizmetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -304,6 +360,17 @@
                 <ScalarProperty Name="HizmetId" ColumnName="HizmetId" />
                 <ScalarProperty Name="PopularAd" ColumnName="PopularAd" />
                 <ScalarProperty Name="PopularId" ColumnName="PopularId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblComments">
+            <EntityTypeMapping TypeName="PratikAraBulModel.tblComments">
+              <MappingFragment StoreEntitySet="tblComments">
+                <ScalarProperty Name="ComHizmetId" ColumnName="ComHizmetId" />
+                <ScalarProperty Name="KullaniciYorumu" ColumnName="KullaniciYorumu" />
+                <ScalarProperty Name="KullaniciMail" ColumnName="KullaniciMail" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

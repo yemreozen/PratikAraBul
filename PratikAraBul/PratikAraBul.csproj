@@ -183,6 +183,9 @@
     <Compile Include="Models\Entity\tblBasliklar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\tblComments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\tblHizmetKategori.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -215,6 +218,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\comment_user.png" />
     <Content Include="images\customer_slider.png" />
     <Content Include="images\date_slider.png" />
     <Content Include="images\denemek.jpg" />
@@ -1738,6 +1742,7 @@
     <Content Include="Views\MusteriHizmetleriNumaralari\Kategori.cshtml" />
     <Content Include="Views\Hizmetler\PopularHizmetler.cshtml" />
     <Content Include="Views\Hizmetler\PopularEkle.cshtml" />
+    <Content Include="Views\MusteriHizmetleriNumaralari\Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

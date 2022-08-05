@@ -33,21 +33,39 @@ namespace PratikAraBul.Controllers
 
             return View(model);
         }
+        [HttpGet]
+        public PartialViewResult Comments(int id)
+        {
+            ViewBag.deger = id;
+            var com = db.tblComments.ToList();
+
+            return PartialView(com);
+        }
+
+        [HttpPost]
+        public PartialViewResult Comments(tblComments pr)
+        {
+            db.tblComments.Add(pr);
+            db.SaveChanges();
+            
+
+            return PartialView();
+        }
         public ActionResult Arama(string p)
         {
 
             model.HizmetlerList = from d in db.tblHizmetler select d;
             if (!string.IsNullOrEmpty(p))
             {
-                model.HizmetlerList = model.HizmetlerList.Where(x => x.HizmetAdi.Contains(p.ToUpper())).ToList();
-
+                model.HizmetlerList = model.HizmetlerList.Where(x => x.HizmetAdi.Contains(p)).ToList();
+                
             }
             else
             {
                 return RedirectToAction("Page404", "Home");
             }
             model.HizmetKategoriList = db.tblHizmetKategori.ToList();
-
+             model.PopularHizmetList=db.tblPopularHizmet.ToList();  
             return View(model);
 
         }

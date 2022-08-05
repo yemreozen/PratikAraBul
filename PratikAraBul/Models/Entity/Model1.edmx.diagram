@@ -14,6 +14,8 @@
         <EntityTypeShape EntityType="PratikAraBulModel.tblAdmin" Width="1.5" PointX="5.375" PointY="3.75" />
         <EntityTypeShape EntityType="PratikAraBulModel.tblPopularHizmet" Width="1.5" PointX="5.25" PointY="8.5" />
         <AssociationConnector Association="PratikAraBulModel.FK_tblPopularHizmet_tblHizmetler" />
+        <EntityTypeShape EntityType="PratikAraBulModel.tblComments" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="PratikAraBulModel.FK_tblComments_tblHizmetler" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

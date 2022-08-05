@@ -1,0 +1,58 @@
+﻿@using PratikAraBul.Models.Entity
+@model List<tblComments>
+
+<div class="container">
+    <div class="be-comment-block">
+        <h4 class="comments-title">Yorum Yap</h4>
+       
+        <div class="be-comment">
+            <div class="be-img-comment">
+                <a href="blog-detail-2.html">
+                    <img src="~/images/comment_user.png" alt="" class="be-ava-comment">
+                </a>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="be-comment-content">
+
+                    <span class="be-comment-name">
+                        @item.KullaniciAdi
+                    </span>
+
+
+                    <p class="be-comment-text">
+                        @item.KullaniciYorumu
+                    </p>
+                </div>
+            }
+
+            </div>
+        
+
+
+            <form class="form-block" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group fl_icon">
+                            <div class="icon"><i class="fa fa-user"></i></div>
+                            <input class="form-input" type="text" name="KullaniciAdi" placeholder="İsim" required>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 fl_icon">
+                            <div class="form-group fl_icon">
+                                <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                                <input class="form-input" type="text" name="KullaniciMail" placeholder="E-posta" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <textarea class="form-input" required="" name="KullaniciYorumu" placeholder="Yorumunuz.."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary pull-right">Gönder</button>
+                </div>
+            </form>
+
+        </div>
+</div>
