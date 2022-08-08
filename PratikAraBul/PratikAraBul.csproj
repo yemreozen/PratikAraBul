@@ -183,7 +183,7 @@
     <Compile Include="Models\Entity\tblBasliklar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entity\tblComments.cs">
+    <Compile Include="Models\Entity\tblCommend.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\tblHizmetKategori.cs">

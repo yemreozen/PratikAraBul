@@ -2,6 +2,9 @@
 @model HizmetlerModel
 
 
+
+
+
 @{
     ViewBag.Title = "Anasayfa";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -58,13 +61,17 @@
             }
 
         </div>
-        @*@{Html.RenderAction("Comments", "MusteriHizmetleriNumaralari");}*@
+
 
     </div>
 
 
 
+    @Html.Action("Comments", "MusteriHizmetleriNumaralari")
+
+
     <a href="#" class="top">Yukarı Çık &#8593;</a>
+
 
 </body>
 

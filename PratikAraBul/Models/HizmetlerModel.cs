@@ -13,6 +13,7 @@ namespace PratikAraBul.Models
         public IEnumerable<tblHizmetler> HizmetlerList { get; set; }
         public IEnumerable<tblHizmetKategori> HizmetKategoriList { get; set; }
         public IEnumerable<tblPopularHizmet> PopularHizmetList { get; set; }
+        public IEnumerable<tblCommend> CommendList { get; set; }
 
         public tblHizmetler Hizmetler { get; set; }
     }

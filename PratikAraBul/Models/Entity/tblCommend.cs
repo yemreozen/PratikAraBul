@@ -15,16 +15,16 @@ namespace PratikAraBul.Models.Entity
 using System;
     using System.Collections.Generic;
     
-public partial class tblComments
+public partial class tblCommend
 {
 
-    public int CommentId { get; set; }
+    public int ComId { get; set; }
 
     public string KullaniciAdi { get; set; }
 
     public string KullaniciMail { get; set; }
 
-    public string KullaniciYorumu { get; set; }
+    public string KullaniciYorum { get; set; }
 
     public Nullable<int> ComHizmetId { get; set; }
 

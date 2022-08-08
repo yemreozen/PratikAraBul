@@ -44,7 +44,7 @@ public partial class AraBulEntities : DbContext
 
     public virtual DbSet<tblPopularHizmet> tblPopularHizmet { get; set; }
 
-    public virtual DbSet<tblComments> tblComments { get; set; }
+    public virtual DbSet<tblCommend> tblCommend { get; set; }
 
 }
 

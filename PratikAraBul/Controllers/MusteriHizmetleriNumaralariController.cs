@@ -23,49 +23,52 @@ namespace PratikAraBul.Controllers
 
             return View(dgr);
         }
-
+       
         [Route("musterihizmetlerinumaralari/details/{id}/{hizmetadi}")]
+       
         public ActionResult Details(int id)
         {
             model.HizmetlerList = db.tblHizmetler.Where(x => x.HizmetId == id).ToList();
             model.HizmetKategoriList = db.tblHizmetKategori.ToList();
             model.PopularHizmetList = db.tblPopularHizmet.ToList();
-
+           
             return View(model);
         }
-        [HttpGet]
+
         public PartialViewResult Comments(int id)
         {
-            ViewBag.deger = id;
-            var com = db.tblComments.ToList();
-
+            ViewBag.com = id;
+            var com = db.tblCommend.Where(x=>x.ComHizmetId==id).ToList();
             return PartialView(com);
         }
 
-        [HttpPost]
-        public PartialViewResult Comments(tblComments pr)
+       
+        public JsonResult YorumYap(string adsoyad,string eposta,string yorum,int hizmetid)
         {
-            db.tblComments.Add(pr);
+            if (yorum == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            db.tblCommend.Add(new tblCommend { KullaniciAdi = adsoyad, KullaniciMail = eposta, KullaniciYorum = yorum, ComHizmetId = hizmetid });
             db.SaveChanges();
-            
 
-            return PartialView();
+            return Json(false,JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Arama(string p)
+        public ActionResult Arama(string p,int id)
         {
-
+            model.CommendList = db.tblCommend.Where(x => x.ComHizmetId == id).ToList();
+            model.PopularHizmetList = db.tblPopularHizmet.ToList();
             model.HizmetlerList = from d in db.tblHizmetler select d;
             if (!string.IsNullOrEmpty(p))
             {
-                model.HizmetlerList = model.HizmetlerList.Where(x => x.HizmetAdi.Contains(p)).ToList();
-                
+                model.HizmetlerList = model.HizmetlerList.Where(x => x.HizmetAdi.Contains(p.ToUpper())).ToList();
+              
             }
             else
             {
                 return RedirectToAction("Page404", "Home");
             }
-            model.HizmetKategoriList = db.tblHizmetKategori.ToList();
-             model.PopularHizmetList=db.tblPopularHizmet.ToList();  
+            
             return View(model);
 
         }

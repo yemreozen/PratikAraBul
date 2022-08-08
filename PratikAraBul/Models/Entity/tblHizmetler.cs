@@ -26,7 +26,7 @@ public partial class tblHizmetler
 
         this.tblPopularHizmet = new HashSet<tblPopularHizmet>();
 
-        this.tblComments = new HashSet<tblComments>();
+        this.tblCommend = new HashSet<tblCommend>();
 
     }
 
@@ -59,7 +59,7 @@ public partial class tblHizmetler
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<tblComments> tblComments { get; set; }
+    public virtual ICollection<tblCommend> tblCommend { get; set; }
 
 }
 
