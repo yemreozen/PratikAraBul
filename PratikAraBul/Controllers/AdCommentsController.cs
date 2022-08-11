@@ -13,18 +13,18 @@ namespace PratikAraBul.Controllers
         public ActionResult Index(string p)
 
         {
-            var degerler = from d in db.tblHizmetler select d;
+            var degerler = from d in db.tblCommend select d;
             if (!string.IsNullOrEmpty(p))
             {
-                degerler = degerler.Where(x => x.HizmetAdi.Contains(p));
+                degerler = degerler.Where(x => x.KullaniciAdi.Contains(p));
             }
             return View(degerler.ToList());
 
         }
         public ActionResult CommentSil(int id)
         {
-            var kategori = db.tblHizmetler.Find(id);
-            db.tblHizmetler.Remove(kategori);
+            var yorum = db.tblCommend.Find(id);
+            db.tblCommend.Remove(yorum);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

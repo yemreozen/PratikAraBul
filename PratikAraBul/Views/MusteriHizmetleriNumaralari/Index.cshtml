@@ -23,26 +23,21 @@
 
     <link href="~/Content/musteriHizmetleriNumaralari.css" rel="stylesheet" />
     <link href="~/Content/swiper-bundle.min.css" rel="stylesheet" />
-   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-
-
-
-
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 <body>
 
     <div class="fullbody">
-        <div class="container paged">
+        <h1>ARADIĞINIZ TÜM MARKA VE FİRMALARIN MÜŞTERİ HİZMETLERİ ÇAĞRI MERKEZİ NUMARALARI BURADA </h1>
+            <div class="container-paged">
             @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
-            {
-                LiElementClasses = new List<string>
+       {
+           LiElementClasses = new List<string>
 {
-                        "page-link"
+                        "page-link","pagedlist"
                         }
-            })
+       })
         </div>
 
         <div class="row">
@@ -50,7 +45,7 @@
 
             <main class="hizmetlercardmain">
 
-                <section class=" hizcards">
+                <section class="hizcards">
                     @foreach (var hizmet in Model)
                     {
                         <div class=" hizmetlercard">
@@ -73,7 +68,7 @@
             {
                 LiElementClasses = new List<string>
       {
-          "page-link"
+          "page-link","pagedlist"
       }
             })
 
@@ -81,7 +76,7 @@
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
 
-                        
+
 
                         <div class="card swiper-slide">
                             <div class="image-content">

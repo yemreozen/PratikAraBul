@@ -14,8 +14,9 @@ namespace PratikAraBul.Models.Entity
 
 using System;
     using System.Collections.Generic;
-    
-public partial class tblHizmetler
+    using System.Web.Mvc;
+
+    public partial class tblHizmetler
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -40,9 +41,9 @@ public partial class tblHizmetler
     public Nullable<int> HizmetKategori { get; set; }
 
     public string HizmetResimUrl { get; set; }
-
+    [AllowHtml]
     public string HizmetDesc { get; set; }
-
+    [AllowHtml]
     public string BaslikAlti { get; set; }
 
 
