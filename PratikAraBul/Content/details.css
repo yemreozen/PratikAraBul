@@ -3,20 +3,20 @@
 }
 .details {
     font-family:Oswald;
-    padding: 20px;
-    margin-top:150px;
+    padding: 120px;
+    margin-top:80px;
     background: white;
    
 }
 .maincard{
-    width:650px;
+    width:450px;
     height:auto;
     margin:0 auto;
     border-radius:250px;
 }
 .mainimg {
-    width: 550px;
-    height: 420px;
+    width: 450px;
+    height: 320px;
     display: inline-block;
     margin: 0 auto;
 }
@@ -105,6 +105,9 @@
     }
 }
 /*Comment kýsmý*/
+.comments-details{
+
+}
 @media(min-width:568px) {
     .end {
         margin-left: auto;
@@ -136,12 +139,10 @@
     width: 50%;
 }
 
-
-
-.comments {
-    margin-top: 5%;
-    margin-left: 5px;
+.container-comment {
+  
 }
+
 
 
 .comment {
@@ -222,8 +223,20 @@ label {
 .top:hover{
     color:white;
 }
+/*Comments paged list*/
+.pagedlist {
+    border-radius: 50px;
+    border: 1px solid black;
+    color: black;
+    font-family: fantasy;
+    cursor: pointer;
+}
 
-
+    .pagedlist:hover {
+        background-color: mediumblue;
+        color: white;
+        transition: 0.5s;
+    }
 
 
 

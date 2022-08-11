@@ -19,7 +19,7 @@ namespace PratikAraBul.Controllers
         {
 
 
-            var dgr = db.tblHizmetler.OrderBy(x => x.HizmetAdi).ToList().ToPagedList(sayfa, 6);
+            var dgr = db.tblHizmetler.OrderBy(x => x.HizmetAdi).ToList().ToPagedList(sayfa,15);
 
             return View(dgr);
         }
@@ -35,11 +35,11 @@ namespace PratikAraBul.Controllers
             return View(model);
         }
 
-        public PartialViewResult Comments(int id)
+        public PartialViewResult Comments(int id,int page=1)
         {
             ViewBag.com = id;
-            model.CommendList = db.tblCommend.Where(x => x.ComHizmetId == id).ToList();
-            return PartialView(model);
+            var comments = db.tblCommend.Where(x => x.ComHizmetId == id).ToList().ToPagedList(page,4);
+            return PartialView(comments);
         }
 
 

@@ -19,45 +19,41 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href="~/Content/musteriHizmetleriNumaralari.css" rel="stylesheet" />
-    
+    <link href="~/Content/swiper-bundle.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 
 </head>
 <body>
     <div class="container paged">
         @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
-                   {
-                       LiElementClasses = new List<string>
-                        {
+        {
+            LiElementClasses = new List<string>
+            {
                         "page-link"
                         }
-                    })
+        })
     </div>
     <div class="ust_kisim">
 
         <div class="row">
 
 
-            <main>
+            <main class="hizmetlercardmain">
 
-                <section class="cards">
+                <section class="hizcards">
                     @foreach (var hizmet in Model)
                     {
-                        <div class="card">
-                            <div class="card-image">
+                        <div class=" hizmetlercard">
+                            <div class=" hizcardimg">
                                 <img src="~/images/@hizmet.HizmetResimUrl">
                             </div>
-                            <div class="card-content">
-                                @*<a href="musterihizmetlerinumaralari/details/@hizmet.HizmetId/@(Seo.AdresDuzenle(hizmet.HizmetAdi))">@hizmet.HizmetAdi</a>*@
-                                @Html.ActionLink(hizmet.HizmetAdi.ToUpper(), "Details", "MusteriHizmetleriNumaralari", new { id = hizmet.HizmetId, hizmetadi = Seo.AdresDuzenle(hizmet.HizmetAdi) },null)
+                            <div class="card-contents">
+
+                                @Html.ActionLink(hizmet.HizmetAdi.ToUpper(), "Details", "MusteriHizmetleriNumaralari", new { id = hizmet.HizmetId, hizmetadi = Seo.AdresDuzenle(hizmet.HizmetAdi) }, null)
+
+
                             </div>
                         </div>
                     }
@@ -67,10 +63,10 @@
 
             </main>
             @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
-                {
+            {
                 LiElementClasses = new List<string>
                 {
-      "page-link"
+                     "page-link","pagedlist"
                 }
             })
 
@@ -78,36 +74,69 @@
         </div>
 
     </div>
+    <div class="slide-container swiper">
+        <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
 
-    <div class="header">
-        <h4>Diğer Pratik Araçlarımız</h4>
 
 
+                <div class="card swiper-slide">
+                    <div class="image-content">
+                        <span class="overlay"></span>
 
+                        <div class="card-image">
+                            <img src="~/images/hesaplama_sileder.png" alt="" class="card-img" />
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h2 class="name">Hesaplama Araçlari</h2>
+                        <p class="description">Kredi Hesaplama, Faiz Hesaplama, Tyt Hesaplama, AYT hesaplama, Karne Notu Hesaplama, Ortalama Hesapalama</p>
+
+                        <a class="button" href="">View More</a>
+                    </div>
+                </div>
+                <div class="card swiper-slide">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+
+                        <div class="card-image">
+                            <img src="~/images/customer_slider.png" alt="" class="card-img" />
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h2 class="name">Markaların Müşteri Hizmetleri</h2>
+                        <p class="description">Popüler tüm markaların müşteri hizmetleri iletişim bilgilerine hemen ulaşmak istiyorsan işte tam burada.</p>
+
+                        @Html.ActionLink("Öğren", "index", "musterihizmetlerinumaralari", null, new { @class = "button" })
+                    </div>
+                </div>
+                <div class="card swiper-slide">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+
+                        <div class="card-image">
+                            <img src="~/images/date_slider.png" alt="" class="card-img">
+                        </div>
+                    </div>
+
+                    <div class="card-content">
+                        <h2 class="name">Kalan Gün Sayaçları</h2>
+                        <p class="description">Kurbana kaç gün kaldı @DateTime.Now.Year,kurban bayramı @DateTime.Now.Year, bayrama kaç gün kaldı, okulların açılmasına kaç gün kaldı @DateTime.Now.Year, tatile kaç gün kaldı @DateTime.Now.Year </p>
+
+                        <button class="button">View More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+        <div class="swiper-pagination"></div>
     </div>
-    <div class="row1-container">
-        <div class="box box-down cyan">
-            <a href="#" style="text-decoration:none;"><h2>Hesaplama Araçları</h2></a>
-            <p>Kredi Hesaplama, Faiz Hesaplama, Tyt Hesaplama, AYT hesaplama, Karne Notu Hesaplama, Ortalama Hesapalama</p>
-            <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="">
-
-        </div>
-
-        <div class="box red">
-            <a href="#" style="text-decoration:none;">
-                <h2>Markaların Müşteri Hizmetleri</h2>
-            </a>
-            <p>Popüler tüm markaların müşteri hizmetleri iletişim bilgileri.</p>
-            <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="">
-        </div>
-
-        <div class="box box-down blue">
-            <a href="#" style="text-decoration:none;"><h2>Kalan Gün Sayaçları</h2></a>
-            <p>Önemli günlere kalan sürlerin hesaplamaları burada !</p>
-            <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="">
-        </div>
-    </div>
-
+    <script src="~/Scripts/swiper-bundle.min.js"></script>
+    <script src="~/Scripts/aramascript.js"></script>
 </body>
 </html>
 

@@ -9,7 +9,9 @@ namespace PratikAraBul.Controllers
 {
     public class AdCommentsController : Controller
     {
+
         AraBulEntities db = new AraBulEntities();
+        [Authorize]
         public ActionResult Index(string p)
 
         {

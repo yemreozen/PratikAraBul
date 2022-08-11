@@ -30,14 +30,14 @@
 
     <div class="fullbody">
         <h1>ARADIĞINIZ TÜM MARKA VE FİRMALARIN MÜŞTERİ HİZMETLERİ ÇAĞRI MERKEZİ NUMARALARI BURADA </h1>
-            <div class="container-paged">
+        <div class="container-paged">
             @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), new PagedListRenderOptions
-       {
-           LiElementClasses = new List<string>
-{
+               {
+                    LiElementClasses = new List<string>
+                    {
                         "page-link","pagedlist"
-                        }
-       })
+                    }
+                })
         </div>
 
         <div class="row">
@@ -135,6 +135,7 @@
             </div>
         </div>
     </div>
+   
     <script src="~/Scripts/swiper-bundle.min.js"></script>
     <script src="~/Scripts/aramascript.js"></script>
 </body>

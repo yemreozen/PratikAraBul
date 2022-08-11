@@ -232,6 +232,7 @@
     <Content Include="images\musteri_hizmetleri.jpg" />
     <Content Include="images\pratiklogo.png" />
     <Content Include="images\sayac.png" />
+    <Content Include="images\shotlogo.png" />
     <Content Include="inspinia-gh-pages\css\animate.css" />
     <Content Include="inspinia-gh-pages\css\bootstrap.css" />
     <Content Include="inspinia-gh-pages\css\bootstrap.min.css" />

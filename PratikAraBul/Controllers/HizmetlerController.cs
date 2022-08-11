@@ -1,4 +1,5 @@
-﻿using PratikAraBul.Models.Entity;
+﻿using PagedList;
+using PratikAraBul.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,15 +15,19 @@ namespace PratikAraBul.Controllers
 
         AraBulEntities db = new AraBulEntities();
 
-        public ActionResult Index(string p)
+        public ActionResult Index(string p,int sayfa= 1)
 
         {
-            var degerler = from d in db.tblHizmetler select d;
-            if (!string.IsNullOrEmpty(p))
-            {
-                degerler = degerler.Where(x => x.HizmetAdi.Contains(p));
-            }
-            return View(degerler.ToList());
+            var dgr = db.tblHizmetler.OrderBy(x => x.HizmetAdi).ToList().ToPagedList(sayfa, 6);
+            return View (dgr);
+
+            //var degerler = from d in db.tblHizmetler select d;
+            //if (!string.IsNullOrEmpty(p))
+            //{
+            //    degerler = degerler.Where(x => x.HizmetAdi.Contains(p));
+            //}
+            
+            //return View(degerler.ToList());
 
         }
 
