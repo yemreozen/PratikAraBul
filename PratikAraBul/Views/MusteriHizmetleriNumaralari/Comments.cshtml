@@ -1,5 +1,5 @@
-﻿@using PratikAraBul.Models.Entity
-@model IEnumerable<tblCommend>
+﻿@using PratikAraBul.Models
+@model HizmetlerModel
 
 <div class="container">
     <div class="row">
@@ -7,7 +7,7 @@
             <h2>YORUMLAR</h2>
 
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.CommendList)
             {
                 <div class="comment mt-4 text-justify float-left">
 
@@ -55,26 +55,28 @@
 
        
 <script src="~/Scripts/jquery-3.4.1.js"></script>
-
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#algin-form').submit(function (e) {
-            e.preventDefault();
-                var kullaniciadi = $("#adsoyad").val();
-                var epostasi = $("#email").val();
-                var yorumunuz = $("#yorum").val();
-                
-                $.ajax({
-                    url: '/MusteriHizmetleriNumaralari/YorumYap',
-                    data: { adsoyad: kullaniciadi, eposta: epostasi, yorum: yorumunuz, hizmetid:@ViewBag.com },
-                  type: 'POST',
-                    dataType: 'json',
-                    success: function (data) {
-                        alert("Yorum yaptığınız için teşekkür ederiz :)");
-                    }
+
+$(document).ready(function () {
+    $('#algin-form').submit(function (e) {
+        e.preventDefault();
+        var kullaniciadi = $("#adsoyad").val();
+        var epostasi = $("#email").val();
+        var yorumunuz = $("#yorum").val();
+
+        $.ajax({
+            url: '/MusteriHizmetleriNumaralari/YorumYap',
+            data: { adsoyad: kullaniciadi, eposta: epostasi, yorum: yorumunuz, hizmetid:@ViewBag.com},
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            alert("Yorum yaptığınız için teşekkür ederiz :)");
+        }
 
                 });
             });
         })
 
+
 </script>
+

@@ -1,0 +1,124 @@
+﻿@using PratikAraBul.Models.Entity
+@model List<tblPopularHizmet>
+@using PratikAraBul.Models
+
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 Aradığınız Bulunamadı</title>
+    <link rel="stylesheet" href="~/Content/swiper-bundle.min.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/arama404.css" />
+
+
+</head>
+
+<body>
+    <div class="fullbody">
+        <div id="notfound">
+            <div class="notfound">
+                <div class="notfound-404"></div>
+                <h1>404</h1>
+                <h2>Oops! Aradığınızı bulamadık </h2>
+                <p>Aradığınız sonucun ne kadar önemli olduğunun farkındayız. Bunun için bizle lütfen iletişime geçer misiniz ?</p>
+                <a href="">İletişime Geç !</a>
+            </div>
+        </div>
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+                    @foreach (var item in Model)
+                    {
+
+
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class="card-image">
+                                    <img src="~/images/@item.PopularImageUrl" alt="" class="card-img">
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                <h2 class="name">@item.PopularAd.ToUpper()</h2>
+                                <p class="description">Aradığınız tüm firmalarım müşteri hizmetleri çağrı merkezleri burada !</p>
+
+                                @Html.ActionLink("Öğren", "Details", "MusteriHizmetleriNumaralari", new { id = item.HizmetId, hizmetadi = Seo.AdresDuzenle(item.PopularAd) }, new { @class = "button" })
+                            </div>
+                        </div>
+                    }
+
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <img src="~/images/hesaplama_sileder.png" alt="" class="card-img"/>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">Hesaplama Araçlari</h2>
+                            <p class="description">Kredi Hesaplama, Faiz Hesaplama, Tyt Hesaplama, AYT hesaplama, Karne Notu Hesaplama, Ortalama Hesapalama</p>
+
+                            <a class="button" href="">View More</a>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <img src="~/images/customer_slider.png" alt="" class="card-img"/>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">Markaların Müşteri Hizmetleri</h2>
+                            <p class="description">Popüler tüm markaların müşteri hizmetleri iletişim bilgilerine hemen ulaşmak istiyorsan işte tam burada.</p>
+
+                            @Html.ActionLink("Öğren", "index", "musterihizmetlerinumaralari", null, new { @class = "button" })
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <img src="~/images/date_slider.png" alt="" class="card-img">
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">Kalan Gün Sayaçları</h2>
+                            <p class="description">Kurbana kaç gün kaldı @DateTime.Now.Year,kurban bayramı @DateTime.Now.Year, bayrama kaç gün kaldı, okulların açılmasına kaç gün kaldı @DateTime.Now.Year, tatile kaç gün kaldı @DateTime.Now.Year </p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+
+
+
+        <script src="~/Scripts/swiper-bundle.min.js"></script>
+        <script src="~/Scripts/aramascript.js"></script>
+
+
+
+    </div>
+
+</body>
+
+</html>

@@ -23,11 +23,11 @@ namespace PratikAraBul.Controllers
             hizmetler.HizmetlerList = db.tblHizmetler.ToList();
             return PartialView(hizmetler);
         }
-        public ActionResult Page404()
+        public PartialViewResult Page404()
         {
             Response.StatusCode = 404;
             Response.TrySkipIisCustomErrors = true;
-            return View();
+            return PartialView();
         }
 
     }

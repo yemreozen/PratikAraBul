@@ -57,7 +57,7 @@
                             </div>
                             <div class="card-content">
                                 @*<a href="musterihizmetlerinumaralari/details/@hizmet.HizmetId/@(Seo.AdresDuzenle(hizmet.HizmetAdi))">@hizmet.HizmetAdi</a>*@
-                                @Html.ActionLink(hizmet.HizmetAdi, "Details", "MusteriHizmetleriNumaralari", new { id = hizmet.HizmetId, hizmetadi = Seo.AdresDuzenle(hizmet.HizmetAdi) },null)
+                                @Html.ActionLink(hizmet.HizmetAdi.ToUpper(), "Details", "MusteriHizmetleriNumaralari", new { id = hizmet.HizmetId, hizmetadi = Seo.AdresDuzenle(hizmet.HizmetAdi) },null)
                             </div>
                         </div>
                     }

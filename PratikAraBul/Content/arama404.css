@@ -1,133 +1,107 @@
-﻿* {
-    margin: 0;
+.fullbody{
+    padding:10%;
+}
+* {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 0px;
-    
-}
-.fullbody {
-    padding:40px 140px;
-
-}
-
-.paged{
-    position:relative;
-    top:150px;
-
-}
-
-.hizcards:hover > .hizmetlercard:not(:hover) {
-    filter: brightness(0.3) saturate(0) contrast(1.1) blur(5px);
-}
-
-.hizmetlercard:hover {
-    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.55);
-    border-radius: 25px;
-    transform: translateY(-10px);
-}
-
-.hizcards > hizmetlercard:hover {
-    background-color: #5C5C5c;
-}
-
-main {
-    display: grid;
-    grid-template-columns: 1fr repeat(12, minmax(auto,60px)) 1fr;
-    grid-gap: 40px;
-    padding: 40px 0;
 }
 
 
 
-.hizcards {
-    grid-column: 2 / span 2;
-    display: grid;
-    grid-template-columns: repeat(12, minmax(auto,60px));
-    grid-gap: 40px;
-    margin-top: 120px;
+#notfound {
+  position: relative;
+  height: 50vh;
 }
 
-.hizmetlercard {
-    grid-column-end: span 4;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    cursor: pointer;
-    border-radius: 15px;
-    border:1px solid black;
-    transition: all 0.55s ease 0s;
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
-.hizcardimg {
-    width: 100%;
-    padding-top: 55%;
-    overflow: hidden;
-    position: relative;
-    border-radius: 15px 15px 0px 0px;
+.notfound {
+  max-width: 560px;
+  width: 100%;
+  padding-left: 160px;
+  line-height: 1.1;
 }
 
-    .hizcardimg img {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%)
-    }
-
-.card-contents {
-    padding: 20px;
+.notfound .notfound-404 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 140px;
+  height: 140px;
+  background-image: url('../images/emoji.png');
+  background-size: cover;
 }
 
-.card-contents a {
-    margin-bottom: 20px;
-    text-decoration:none;
-    color:black;
-    text-align:center;
-    font-weight:bold;
-}
-  .card-contents a:hover {
-        margin-bottom: 20px;
-        text-decoration: none;
-        color: black;
-    }
-
-
-
-@media only screen and (max-width: 1000px) {
-    .hizmetlercard {
-        grid-column-end: span 4;
-    }
-
-   
+.notfound .notfound-404:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(2.4);
+      -ms-transform: scale(2.4);
+          transform: scale(2.4);
+  border-radius: 50%;
+  background-color: #f2f5f8;
+  z-index: -1;
 }
 
-@media only screen and (max-width: 700px) {
-    main {
-        grid-gap:55px;
-    }
+.notfound h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 65px;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: #151723;
+  text-transform: uppercase;
+}
 
-    .hizcards {
-        margin-top: 45px;
-        padding: 0;
-    }
+.notfound h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+  color: #151723;
+}
+
+.notfound p {
+  font-family: 'Nunito', sans-serif;
+  color: #999fa5;
+  font-weight: 400;
+}
+
+.notfound a {
+  font-family: 'Nunito', sans-serif;
+  display: inline-block;
+  font-weight: 700;
+  border-radius: 40px;
+  text-decoration: none;
+  color: #388dbc;
+}
+
+@media only screen and (max-width: 767px) {
+  .notfound .notfound-404 {
+    width: 60px;
+    height: 60px;
+    margin:70px 40px;
+    font-size:14px;
     
 
 
-}
-
-@media only screen and (max-width: 500px) {
-
-
-    .hizcards {
-        grid-column: 2 / span 6;
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 20px;
-    }
-
-    .hizmetlercard {
-        grid-column-end: span 6;
+  }
+    .notfound{
+     
     }
 }
-/*Diğer Pratik Araçlar Kısmı*/
+/*Cards css*/
 /* Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
@@ -193,8 +167,8 @@ main {
 
 .card-image {
     position: relative;
-    height: 120px;
-    width: 120px;
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
     background: #FFF;
     padding: 3px;
@@ -204,7 +178,7 @@ main {
         height: 100%;
         width: 100%;
         object-fit: cover;
-        border-radius: 70%;
+        border-radius: 50%;
         border: 4px solid #4070F4;
     }
 
@@ -230,10 +204,11 @@ main {
     margin: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration:none;
 }
 
     .button:hover {
-        background: #265DF2;
+        background: #f2f5f8;
     }
 
 .swiper-navBtn {

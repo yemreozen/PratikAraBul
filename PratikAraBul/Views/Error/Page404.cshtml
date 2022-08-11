@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+@{
+    ViewBag.Title = "Müşteri Hizmetleri İletişim Bilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="~/Content/404font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/404style.css" />
+
+
+
+</head>
+
+<body>
+
+    <div id="notfound">
+        <div class="notfound-bg"></div>
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>404</h1>
+            </div>
+            <h2>Oops!Aradığınız Sayfa Bulunamadı</h2>
+
+
+            @Html.ActionLink("Ana Sayfaya Dön", "index", "home", null, new { @class = "menus" })
+        </div>
+    </div>
+
+</body>
+
+</html>
+

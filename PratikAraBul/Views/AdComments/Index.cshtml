@@ -1,0 +1,56 @@
+﻿@using PratikAraBul.Models.Entity
+@model List<tblCommend>
+
+@{
+    ViewBag.Title = "Ekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+
+
+
+
+
+</head>
+<body>
+
+    <a href="/Hizmetler/YeniHizmet" class="btn btn-primary">Yeni Hizmet Ekle</a>
+    <table class="table table-bordered">
+        <tr>
+            <th>Yorum ID</th>
+            <th>Yoruma Ait Hizmet Adı</th>
+            <th>Kullanıcı Adı</th>
+            <th>Kullanıcı Mail</th>
+            <th>Kullanıcı Yorum</th>
+            
+        </tr>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ComId</td>
+                    <td>@item.tblHizmetler.HizmetAdi</td>
+                    <td>@item.KullaniciAdi</td>
+                    <td>@item.KullaniciMail</td>
+                    <td>@item.KullaniciYorum</td>
+                   
+
+
+
+                    <td><a href="/AdCommentes/CommentsSil/@item.ComId" class="btn btn-danger">Sil</a> </td>
+                  
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

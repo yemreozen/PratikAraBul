@@ -150,7 +150,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdCommentsController.cs" />
     <Compile Include="Controllers\AdLoginsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HizmetlerController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\MusteriHizmetleriNumaralariController.cs" />
@@ -202,6 +204,7 @@
   <ItemGroup>
     <Content Include="Content\404font-awesome.min.css" />
     <Content Include="Content\404style.css" />
+    <Content Include="Content\arama404.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -213,7 +216,7 @@
     <Content Include="Content\Layoutt.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\musteriHizmetleriNumaralari.css" />
-    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\swiper-bundle.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -222,6 +225,7 @@
     <Content Include="images\customer_slider.png" />
     <Content Include="images\date_slider.png" />
     <Content Include="images\denemek.jpg" />
+    <Content Include="images\emoji.png" />
     <Content Include="images\hal.jpg" />
     <Content Include="images\hesaplama.png" />
     <Content Include="images\hesaplama_sileder.png" />
@@ -1598,6 +1602,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\aramascript.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Entity\Model1.edmx">
@@ -1713,6 +1718,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\layoutscript.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Page404.js" />
+    <Content Include="Scripts\swiper-bundle.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1743,6 +1750,9 @@
     <Content Include="Views\Hizmetler\PopularHizmetler.cshtml" />
     <Content Include="Views\Hizmetler\PopularEkle.cshtml" />
     <Content Include="Views\MusteriHizmetleriNumaralari\Comments.cshtml" />
+    <Content Include="Views\Error\Page404.cshtml" />
+    <Content Include="Views\Error\AramaSonucuBulunamadi.cshtml" />
+    <Content Include="Views\AdComments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
