@@ -4,21 +4,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+
+
 }
 
 
-nav{
-  
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  height: 120px;
-  background: #3E8DA8;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  z-index: 99;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 120px;
+    background: #3E8DA8;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    font-family: 'Poppins', sans-serif;
 }
 nav .navbar{
   height: 100%;
@@ -304,6 +305,7 @@ nav .navbar .links li .sub-menu li{
     padding: 50px 0;
     color: #f0f9ff;
     background-color: #282d32;
+    font-family: 'Poppins', sans-serif;
 }
 
     .footer-dark h3 {

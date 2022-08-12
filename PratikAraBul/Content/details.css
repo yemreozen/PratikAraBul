@@ -1,27 +1,33 @@
 * {
     box-sizing: border-box;
 }
+
 .details {
-    font-family:Oswald;
-    padding: 120px;
-    margin-top:80px;
+    padding: 40px;
+    margin-top: 80px;
     background: white;
-   
+    text-indent: 4px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.maincard{
-    width:450px;
-    height:auto;
-    margin:0 auto;
-    border-radius:250px;
+
+.maincard {
+    width: 450px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 250px;
+    margin-top:50px;
 }
 .mainimg {
     width: 450px;
     height: 320px;
     display: inline-block;
     margin: 0 auto;
+   
 }
 
-
+div.hizmetdesc{
+  margin-top:50px;
+}
 
 .leftcolumn {
     float: left;
@@ -104,19 +110,28 @@
        text-align:center;
     }
 }
+
 /*Comment kýsmý*/
 .comments-details{
-
+   padding:0 120px;
 }
 @media(min-width:568px) {
     .end {
         margin-left: auto;
+    }
+    .comments-details {
+        padding: 0 ;
+        margin:0;
     }
 }
 
 @media(max-width:768px) {
     #post {
         width: 100%;
+    }
+    .comments-details {
+        padding: 0;
+        margin: 0;
     }
 }
 
@@ -138,11 +153,6 @@
     border-radius: 13px;
     width: 50%;
 }
-
-.container-comment {
-  
-}
-
 
 
 .comment {

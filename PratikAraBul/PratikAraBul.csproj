@@ -222,6 +222,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\comment_user.png" />
+    <Content Include="images\customer-service-img_header.jpg" />
     <Content Include="images\customer_slider.png" />
     <Content Include="images\date_slider.png" />
     <Content Include="images\denemek.jpg" />
@@ -229,6 +230,7 @@
     <Content Include="images\hal.jpg" />
     <Content Include="images\hesaplama.png" />
     <Content Include="images\hesaplama_sileder.png" />
+    <Content Include="images\logohakkımızda.png" />
     <Content Include="images\musteri_hizmetleri.jpg" />
     <Content Include="images\pratiklogo.png" />
     <Content Include="images\sayac.png" />

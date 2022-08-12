@@ -1,4 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+﻿
 
 * {
     padding: 0;
@@ -75,14 +75,15 @@ div .carousel {
 .btn_primary {
     border: none;
     outline: none;
-    background: linear-gradient(90deg, #ff9966, #ff5e62);
+    background: linear-gradient(90deg, #0c00ad, #3E8DA8);
     padding: 0.9rem 1.2rem;
     border-radius: 50px;
     color: white;
     font-size: 1.0rem;
-    box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
+    box-shadow: 1px 10px 2rem #3E8DA8;
     transition: all 0.2s ease-in;
     text-decoration: none;
+    font-weight:bold;
 }
 
     .btn_primary:hover {
@@ -114,4 +115,43 @@ div .carousel {
     }
 
     
+}
+/*Hakkımızda kısmı*/
+
+
+#row {
+    padding: 5% 2%;
+}
+
+#liste {
+    position: relative;
+    margin: auto;
+}
+
+#desc {
+    position: relative;
+    top: 20px;
+}
+
+#liste img {
+    width: 100%;
+    height: auto;
+}
+
+#desc h4 {
+    text-align: center;
+    color:black;
+    font-size: 25px;
+    font-family: DinRoundProLight;
+}
+
+#desc hr {
+    color: chocolate;
+}
+
+#desc p {
+    text-align: justify;
+    color: black;
+    font-size: 15px;
+    font-family: DinRoundProLight;
 }
