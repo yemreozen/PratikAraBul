@@ -1,0 +1,21 @@
+﻿body{
+    margin:0;
+    padding:0;
+    width:100%;
+
+}
+/*Header*/
+.jumbotron {
+    position: relative;
+    top: 120px;
+    background-image: url('../images/hesaplamaheader.jpg');
+    width: 100%;
+    height: auto;
+}
+
+    .jumbotron h1 {
+        font-family: Oswald;
+        color: #3E8DA8;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px black;
+    }

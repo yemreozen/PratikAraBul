@@ -153,6 +153,7 @@
     <Compile Include="Controllers\AdCommentsController.cs" />
     <Compile Include="Controllers\AdLoginsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HesaplamaAraclariController.cs" />
     <Compile Include="Controllers\HizmetlerController.cs" />
     <Compile Include="Controllers\KategoriController.cs" />
     <Compile Include="Controllers\MusteriHizmetleriNumaralariController.cs" />
@@ -214,8 +215,10 @@
     <Content Include="Content\hizmetlerDetail.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\Layoutt.css" />
+    <Content Include="Content\lgspuanhesaplama.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\musteriHizmetleriNumaralari.css" />
+    <Content Include="Content\hesaplama.css" />
     <Content Include="Content\swiper-bundle.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -229,6 +232,7 @@
     <Content Include="images\emoji.png" />
     <Content Include="images\hal.jpg" />
     <Content Include="images\hesaplama.png" />
+    <Content Include="images\hesaplamaheader.jpg" />
     <Content Include="images\hesaplama_sileder.png" />
     <Content Include="images\logohakkımızda.png" />
     <Content Include="images\musteri_hizmetleri.jpg" />
@@ -1720,6 +1724,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\layoutscript.js" />
+    <Content Include="Scripts\LgsPuanHesaplama.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Page404.js" />
     <Content Include="Scripts\swiper-bundle.min.js" />
@@ -1735,7 +1740,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\HalFiyatlari\Index.cshtml" />
     <Content Include="Views\MusteriHizmetleriNumaralari\Index.cshtml" />
     <Content Include="Views\MusteriHizmetleriNumaralari\Details.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
@@ -1756,6 +1760,9 @@
     <Content Include="Views\Error\Page404.cshtml" />
     <Content Include="Views\Error\AramaSonucuBulunamadi.cshtml" />
     <Content Include="Views\AdComments\Index.cshtml" />
+    <Content Include="Views\HesaplamaAraclari\Index.cshtml" />
+    <Content Include="Views\HesaplamaAraclari\LgsPuanHesaplama.cshtml" />
+    <Content Include="Views\HesaplamaAraclari\HesaplamaMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
