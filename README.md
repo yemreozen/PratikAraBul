@@ -1,4 +1,4 @@
-Pratik Ara Bul web sitesi C#,jQuery,Javascript,Linq,Entity Framework, Mssql, Html,Css,Bootsrap kullanılarak oluşturulmuştur. Ajax ile kullanıcıların giriş yapmadan
+Pratik Ara Bul web sitesi Asp.NET MVC ile C#,jQuery,Javascript,Linq,Entity Framework, Mssql, Html,Css,Bootsrap kullanılarak oluşturulmuştur. Ajax ile kullanıcıların giriş yapmadan
 public yorum yapmaları sağlanıyor.
 
 Bu projedeki amaç internette vakit kaybettiricek basit konular için pratiklik sağlamaktadır. Yüzlerce firmanın müşteri hizmetleri numaraları, markalar için kullanıcıların
